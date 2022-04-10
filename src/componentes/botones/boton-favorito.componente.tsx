@@ -1,3 +1,5 @@
+import React, { FC, JSXElementConstructor } from "react";
+import { JsxEmit } from "typescript";
 import './boton-favorito.css';
 /**
  * Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
@@ -7,8 +9,16 @@ import './boton-favorito.css';
  * 
  * @returns un JSX element 
  */
-const BotonFavorito = ({esFavorito, onClick}) => {
-    const src = esFavorito ? "/imagenes/star-filled.png" : "/imagenes/star.png"
+
+ interface BotonFavoritoProps {
+    esFavorito: boolean,
+    onClick: () => void;
+
+}
+
+const BotonFavorito = ({esFavorito, onClick}: BotonFavoritoProps): JSX.Element =>{
+
+    const src: string = esFavorito ? "/imagenes/star-filled.png" : "/imagenes/star.png"
 
     return <div className="boton-favorito">
         <img src={src} alt={"favorito"} />

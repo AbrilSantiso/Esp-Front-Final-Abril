@@ -9,7 +9,7 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
  * 
  * @returns un JSX element 
  */
-const GrillaPersonajes = () => {
+const GrillaPersonajes = (): JSX.Element => {
 
     return <div className="grilla-personajes">
        <TarjetaPersonaje />
