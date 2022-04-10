@@ -11,6 +11,7 @@ import './grilla-personajes.css';
  * 
  * @returns un JSX element 
 */
+
 export const useSelector: TypedUseSelectorHook<IRootState> = useReduxSelector;
 
 const GrillaPersonajes = (): JSX.Element => {

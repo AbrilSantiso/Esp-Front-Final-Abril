@@ -1,6 +1,15 @@
 import Personaje from "../types/character.types"
 
-export const buscarPersonajesAPI = async (nombre?: string, page?: number): Promise<Personaje[]> => {
+interface data {
+    info:{
+        next:  string | null,
+        prev: string  | null
+    },
+    results: Personaje[]
+}
+
+
+export const buscarPersonajesAPI = async (nombre?: string, page?: number): Promise<data> => {
     let params = "?"
     if (nombre && !page){
         params += `name=${nombre}`
@@ -13,5 +22,4 @@ export const buscarPersonajesAPI = async (nombre?: string, page?: number): Promi
     }
     return fetch(`https://rickandmortyapi.com/api/character/${params}`)
         .then(data => data.json())
-        .then(data => data.results)
 }

@@ -18,6 +18,21 @@ export interface BuscarPersonajesErrorAction extends Action{
     error: string;
 }
 
+export interface LimpiarBusquedaAction extends Action{
+    type: "LIMPIAR_BUSQUEDA"
+}
+
+export interface ActualizarPagesAction extends Action{
+    type: "ACTUALIZAR_NEXT_PREV"
+    next: string | null,
+    prev: string | null,
+}
+
+export interface ActualizarPageActualAction extends Action{
+    type: "ACTUALIZAR_PAGE_ACTUAL"
+    flag: "AUMENTAR" | "DECREMENTAR"
+}
+
 export interface BuscarPersonajesThunkAction extends ThunkAction<void, IRootState, unknown, PersonajesAction>{}
 
 const buscarPersonajes:ActionCreator<BuscarPersonajesAction> = (busqueda: string) => {
@@ -41,12 +56,35 @@ const buscarPersonajesError:ActionCreator<BuscarPersonajesErrorAction> = (error:
     }
 } 
 
+export const limpiarBusqueda:ActionCreator<LimpiarBusquedaAction> = () => {
+    return {
+        type: "LIMPIAR_BUSQUEDA",
+    }
+}
+
+export const actualizarPages:ActionCreator<ActualizarPagesAction> = (info:{next: string | null, prev:string | null}) => {
+    return {
+        type: "ACTUALIZAR_NEXT_PREV",
+        next: info.next,
+        prev: info.prev
+    }
+}
+
+ export const actualizarPageActual:ActionCreator<ActualizarPageActualAction> = (flag: "AUMENTAR" | "DECREMENTAR") => {
+    return {
+        type: "ACTUALIZAR_PAGE_ACTUAL",
+        flag: flag
+    }
+}
+
 export const buscarPersonajesThunk = (name?: string, page?:number): BuscarPersonajesThunkAction => {
     return async (dispatch, getState) => {
             dispatch(buscarPersonajes(name))
             try{
                 const response = await buscarPersonajesAPI(name, page);
-                dispatch(buscarPersonajesSuccess(response))
+                let personajes = response.results;
+                dispatch(buscarPersonajesSuccess(personajes))
+                dispatch(actualizarPages(response.info))
             }catch(e){
                 dispatch(buscarPersonajesError(e))
             }
@@ -58,4 +96,7 @@ export const buscarPersonajesThunk = (name?: string, page?:number): BuscarPerson
 export type PersonajesAction =
     | BuscarPersonajesAction
     | BuscarPersonajesSuccessAction
-    | BuscarPersonajesErrorAction;
+    | BuscarPersonajesErrorAction
+    | LimpiarBusquedaAction
+    | ActualizarPagesAction
+    | ActualizarPageActualAction
