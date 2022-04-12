@@ -83,10 +83,11 @@ export const buscarPersonajesThunk = (name?: string, page?:number): BuscarPerson
             try{
                 const response = await buscarPersonajesAPI(name, page);
                 let personajes = response.results;
-                dispatch(buscarPersonajesSuccess(personajes))
-                dispatch(actualizarPages(response.info))
+                dispatch(buscarPersonajesSuccess(personajes));
+                dispatch(actualizarPages(response.info));
             }catch(e){
-                dispatch(buscarPersonajesError(e))
+                dispatch(buscarPersonajesError(e));
+                dispatch(actualizarPages({next: null, prev: null}));
             }
         }
     }

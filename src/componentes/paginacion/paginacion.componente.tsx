@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from '../personajes/grilla-personajes.componente';
 import { actualizarPageActual, buscarPersonajesThunk } from '../../actions/charactersActions';
+import { useEffect } from 'react';
 import './paginacion.css';
 /**
  * Componente que contiene los botones para paginar
@@ -18,15 +19,17 @@ const Paginacion = (): JSX.Element => {
     const next = useSelector(state => state.personajes.next)
 
     const dispatch = useDispatch();
+ 
+    useEffect(()=>{
+        dispatch(buscarPersonajesThunk(name, page));
+    },[page])
 
     const handleClickAnterior = ()=> {
         dispatch(actualizarPageActual("DECREMENTAR"));
-        dispatch(buscarPersonajesThunk(name, page))
     }
    
     const handleClickSiguiente = ()=> {
         dispatch(actualizarPageActual("AUMENTAR"));
-        dispatch(buscarPersonajesThunk(name, page))
     }
 
     return <div className="paginacion">
