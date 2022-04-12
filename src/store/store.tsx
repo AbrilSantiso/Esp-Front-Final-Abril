@@ -4,9 +4,11 @@ import { createStore, applyMiddleware } from 'redux';
 import {TypedUseSelectorHook, useSelector as useReduxSelector} from "react-redux";
 import thunk from 'redux-thunk';
 import personajesReducer from "../reducers/charactersReducer";
+import favoritosReducer from "../reducers/favoritesReducer";
 
 const rootReducer = combineReducers({
-   personajes: personajesReducer
+   personajes: personajesReducer,
+   favoritos: favoritosReducer
 });
 
 export type IRootState = ReturnType<typeof rootReducer>;
