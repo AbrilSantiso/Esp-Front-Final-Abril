@@ -1,20 +1,18 @@
-import React, { FC, JSXElementConstructor } from "react";
-import { JsxEmit } from "typescript";
 import './boton-favorito.css';
-/**
- * Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
- * 
- * Deberás tipar las propiedades si usas este componente
- * 
- * 
- * @returns un JSX element 
- */
 
- interface BotonFavoritoProps {
+interface BotonFavoritoProps {
     esFavorito: boolean,
     onClick: () => void;
 
 }
+
+/**
+ * Este componente renderiza el botón que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
+ * @author Abril Santiso
+ * @param {boolean} esFavorito
+ * @param {Function} onClick  
+ * @returns {JSX.Element}
+ */
 
 const BotonFavorito = ({esFavorito, onClick}: BotonFavoritoProps): JSX.Element =>{
 

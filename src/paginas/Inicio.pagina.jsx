@@ -3,19 +3,20 @@ import GrillaPersonajes from "../componentes/personajes/grilla-personajes.compon
 import Paginacion from "../componentes/paginacion/paginacion.componente";
 import { useDispatch } from 'react-redux';
 import { buscarPersonajesThunk, limpiarBusqueda } from "../actions/charactersActions";
- 
+
 /**
- * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
- * 
- * Uso: 
- * ``` <PaginaInicio /> ```
- * 
- * @returns la pagina de inicio
+ * Componente que renderiza el home: la barra para filtrar personajes por su nombre junto con la grilla de personajes.
+ * @author Abril Santiso
+ * @returns {JSX.Element}
  */
 const PaginaInicio = () => {
 
     const dispatch = useDispatch();
 
+    /**
+   * Función que se ejecuta al clickear el botón de "Limpiar filtros"
+   * Despacha la acción de setear los personajes nuevamente al estado inicial y la de limpiar el valor del input de la busqueda
+   */ 
     const limpiarFiltros=()=>{
         dispatch(buscarPersonajesThunk());
         dispatch(limpiarBusqueda())

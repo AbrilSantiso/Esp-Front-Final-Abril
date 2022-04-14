@@ -9,19 +9,22 @@ import {
 } from "../../actions/favoritesActions";
 
 /**
- * Tarjeta para cada personaje dentro de la grilla de personajes.
- *
- * Deberás agregar las propiedades necesarias para mostrar los datos de los personajes
- *
- *
- * @returns un JSX element
+ * Este componente es la card de cada persona que se renderiza en la grilla de personajes.
+ * @author Abril Santiso
+ * @param {Personaje} personaje
+ * @returns {JSX.Element}
  */
+
 const TarjetaPersonaje = ({ id, name, image }: Personaje): JSX.Element => {
 
   const dispatch = useDispatch();
   const favoritos = useSelector((state) => state.favoritos.favoritos);
   let esFavorito = favoritos.some((favorito) => favorito.id === id);
-
+  
+  /**
+   * Función que se ejecuta al clickear el botón de Favorito.
+   * Si el personaje aún no ha sido marcado como favorito, despacha la acción de marcarlo como favorito, en caso contrario lo desmarca.
+   */
   const handleClick = () => {
     if (esFavorito) {
       dispatch(desmarcarFavorito({ id, name, image }));

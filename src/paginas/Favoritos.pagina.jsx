@@ -2,24 +2,31 @@ import { useDispatch } from "react-redux";
 import { desmarcarTodos } from "../actions/favoritesActions";
 import { useSelector } from "../store/store";
 import TarjetaPersonaje from "../componentes/personajes/tarjeta-personaje.componente";
+
 /**
- * Esta es la pagina de favoritos. Aquí se deberan ver todos los personajes marcados como favoritos
- *
- * Uso:
- * ``` <PaginaFavoritos /> ```
- *
- * @returns la pagina de favoritos
+ * Componente que renderiza los personajes marcados como favoritos, si aún no hay 
+ * personajes favoritos renderiza un mensaje indicandolo.
+ * @author Abril Santiso
+ * @returns {JSX.Element}
  */
 const PaginaFavoritos = () => {
 
   const favoritos = useSelector((state) => state.favoritos.favoritos);
   const dispatch = useDispatch();
+   
+   /**
+   * Función que se ejecuta al clickear el botón de "Eliminar todos"
+   * Despacha la acción de desmarcar todos los favoritos.
+   */
+  const handleClick = ()=>{
+    dispatch(desmarcarTodos())
+  };
 
   return (
     <div className="container">
       <div className="actions">
         <h3>Personajes Favoritos</h3>
-        <button className="danger" onClick={()=> {dispatch(desmarcarTodos())}}>Eliminar todos</button>
+        <button className="danger" onClick={handleClick}>Eliminar todos</button>
       </div>
       <div className="grilla-personajes">
           

@@ -2,10 +2,8 @@ import {Link} from "react-router-dom";
 import './encabezado.css';
 
 /**
- * Encabezado que contiene los links para navegar entre las páginas
- *
- * Uso: `<Encabezado />`
- *
+ * Este componente renderiza los links para navegar entre las páginas de la aplicación
+ * @author Abril Santiso
  * @returns {JSX.Element}
  */
 const Encabezado = (): JSX.Element => {

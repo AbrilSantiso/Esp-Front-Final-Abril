@@ -3,14 +3,10 @@ import { useSelector } from '../../store/store';
 import './grilla-personajes.css';
 
 /**
- * Grilla de personajes para la pagina de inicio
- * 
- * Deberás agregar las funciones necesarias para mostrar y paginar los personajes
- * 
- * 
- * @returns un JSX element 
-*/
-
+ * Componente que renderiza las tarjetas de los personajes, si el status del estado global se encuentra "Cargando" renderiza un mensaje indicandolo y si no hay personajes en el estado renderiza un mensaje indicando que no hay personajes que coincidan con la busqueda.
+ * @author Abril Santiso
+ * @returns {JSX.Element}
+ */
 const GrillaPersonajes = (): JSX.Element => {
 
     const personajes = useSelector(state => state.personajes.personajes);
