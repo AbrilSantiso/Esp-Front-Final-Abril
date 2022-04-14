@@ -1,8 +1,6 @@
 import { useDispatch } from "react-redux";
 import { desmarcarTodos } from "../actions/favoritesActions";
-import GrillaPersonajes, {
-  useSelector,
-} from "../componentes/personajes/grilla-personajes.componente";
+import { useSelector } from "../store/store";
 import TarjetaPersonaje from "../componentes/personajes/tarjeta-personaje.componente";
 /**
  * Esta es la pagina de favoritos. Aquí se deberan ver todos los personajes marcados como favoritos

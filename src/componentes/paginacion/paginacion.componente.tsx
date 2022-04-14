@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useSelector } from '../personajes/grilla-personajes.componente';
+import { useSelector } from '../../store/store';
 import { actualizarPageActual, buscarPersonajesThunk } from '../../actions/charactersActions';
 import { useEffect } from 'react';
 import './paginacion.css';

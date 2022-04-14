@@ -1,6 +1,5 @@
 import TarjetaPersonaje from './tarjeta-personaje.componente';
-import {TypedUseSelectorHook, useSelector as useReduxSelector} from "react-redux";
-import { IRootState } from '../../store/store';
+import { useSelector } from '../../store/store';
 import './grilla-personajes.css';
 
 /**
@@ -11,8 +10,6 @@ import './grilla-personajes.css';
  * 
  * @returns un JSX element 
 */
-
-export const useSelector: TypedUseSelectorHook<IRootState> = useReduxSelector;
 
 const GrillaPersonajes = (): JSX.Element => {
 

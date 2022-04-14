@@ -1,7 +1,7 @@
 import BotonFavorito from "../botones/boton-favorito.componente";
 import Personaje from "../../types/character.types";
 import "./tarjeta-personaje.css";
-import { useSelector } from "./grilla-personajes.componente";
+import { useSelector } from "../../store/store";
 import { useDispatch } from "react-redux";
 import {
   desmarcarFavorito,

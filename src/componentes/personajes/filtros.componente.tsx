@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useSelector } from './grilla-personajes.componente';
+import { useSelector } from '../../store/store';
 import { buscarPersonajesThunk } from '../../actions/charactersActions';
 import './filtros.css';
 
