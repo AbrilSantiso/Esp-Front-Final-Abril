@@ -5,7 +5,6 @@ interface BotonFavoritoProps {
     onClick: () => void;
 
 }
-
 /**
  * Este componente renderiza el botón que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
  * @author Abril Santiso
