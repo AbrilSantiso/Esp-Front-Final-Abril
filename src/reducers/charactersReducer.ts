@@ -47,7 +47,8 @@ const personajesReducer:Reducer<PersonajesState, PersonajesAction> =
         case "LIMPIAR_BUSQUEDA":
             return {
                 ...state,
-                busqueda: ""
+                busqueda: "",
+                page: 1
             }    
         case "ACTUALIZAR_NEXT_PREV":
                 return {
